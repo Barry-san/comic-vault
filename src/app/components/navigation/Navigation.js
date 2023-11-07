@@ -1,0 +1,32 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import Cart from "../cart/Cart";
+import { createRef } from "react";
+import toggle from "./toggle";
+
+export default function Navigation() {
+  const ref = createRef(null);
+  return (
+    <header className="w-full sticky top-0 h-fit flex items-center justify-between p-4">
+      <Link href={"/"}>
+        <div className="flex flex-col text-center uppercase font-body text-xl font-semibold mix">
+          <span className="text-[#C43421]">Comic</span>
+          <span>Vault</span>
+        </div>
+      </Link>
+      <button onClick={() => toggle(ref)} className="z-10">
+        <span className="sr-only">Cart</span>
+        <Image
+          src="/cart.svg"
+          alt="cart"
+          className=" invert h-8  "
+          width={24}
+          height={24}
+        />
+      </button>
+      <Cart navRef={ref} />
+    </header>
+  );
+}
