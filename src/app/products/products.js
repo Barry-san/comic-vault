@@ -1,6 +1,5 @@
 "use client";
 import useFetchComics from "../hooks/useFetchComics";
-
 import React from "react";
 import Comic from "./comic";
 

@@ -1,11 +1,4 @@
-"use client";
-
-import { cartContext } from "@/app/context/cartContext";
-import { useContext } from "react";
-
 export default function Hero() {
-  const cart = useContext(cartContext);
-  console.log(cart);
   return (
     <section className="hero flex flex-col items-center justify-center w-full mb-4 ">
       <img src="/hero.jpeg" alt="" />

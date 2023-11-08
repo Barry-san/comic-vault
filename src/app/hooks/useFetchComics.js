@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 
 export default function useFetchComics(endpoint = "") {
@@ -7,7 +8,8 @@ export default function useFetchComics(endpoint = "") {
     console.log("useEffect ran");
     try {
       fetch(
-        `http://gateway.marvel.com/v1/public/comics${endpoint}?ts=1&apikey=3202ae6dd1953fc6635a71e92e487635&hash=608fb31908d13d0aae79896d8ec57bd7`
+        `https://gateway.marvel.com/v1/public/comics${endpoint}?ts=1&apikey=3202ae6dd1953fc6635a71e92e487635&hash=608fb31908d13d0aae79896d8ec57bd7`,
+        { cache: "force-cache" }
       ).then((res) => {
         res.json().then((val) => {
           setComics(val.data.results);

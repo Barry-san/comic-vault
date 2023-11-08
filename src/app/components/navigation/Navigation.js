@@ -5,8 +5,10 @@ import Link from "next/link";
 import Cart from "../cart/Cart";
 import { createRef } from "react";
 import toggle from "./toggle";
+import { useCartContext } from "@/app/context/cartContext";
 
 export default function Navigation() {
+  const { quantity } = useCartContext();
   const ref = createRef(null);
   return (
     <header className="w-full sticky top-0 h-fit flex items-center justify-between p-4">
@@ -16,16 +18,19 @@ export default function Navigation() {
           <span>Vault</span>
         </div>
       </Link>
-      <button onClick={() => toggle(ref)} className="z-10">
-        <span className="sr-only">Cart</span>
-        <Image
-          src="/cart.svg"
-          alt="cart"
-          className=" invert h-8  "
-          width={24}
-          height={24}
-        />
-      </button>
+      <div className="z-30">
+        <button onClick={() => toggle(ref)} className="z-10">
+          <span className="sr-only">Cart</span>
+          <Image
+            src="/cart.svg"
+            alt="cart"
+            className=" invert h-8  "
+            width={24}
+            height={24}
+          />
+        </button>
+        {quantity > 0 ? quantity : null}
+      </div>
       <Cart navRef={ref} />
     </header>
   );

@@ -1,6 +1,7 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/app/components/navigation/Navigation";
+import { CartContextProvider } from "./context/cartContext";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Comic vault",
@@ -12,8 +13,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={"bg-black text-white"}>
-        <Navigation />
-        {children}
+        <CartContextProvider>
+          <Toaster />
+          <Navigation />
+          {children}
+        </CartContextProvider>
       </body>
     </html>
   );
