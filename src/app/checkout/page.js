@@ -1,8 +1,11 @@
+"use client";
+import { useCartContext } from "../context/cartContext";
 export default function CheckoutPage() {
+  const {} = useCartContext();
   return (
     <div>
-      <h1>CheckoutPage : </h1>
-      <a href="/">Return to shopping</a>
+      <section></section>
+      <section></section>
     </div>
   );
 }

@@ -1,11 +1,36 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 
 export const cartContext = createContext([]);
 
 export function CartContextProvider({ children }) {
-  const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(0);
+  const defaultItems = localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+  const [cart, setCart] = useState(defaultItems);
+  const [quantity, settQuantity] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useMemo(() => {
+    /*get cart items from localStorage if it is available. */
+    localStorage.setItem("cart", JSON.stringify(cart));
+    let price = 0;
+    for (let item of cart) {
+      price += item.price * item.quantity;
+    }
+    /*looping through the items in the cart object gotten from localStorage,
+    set the price variable to the value of the total available price. */
+    setTotalPrice(price);
+
+    let quantity = 0;
+    for (let item of cart) {
+      quantity += item.quantity;
+    }
+
+    /*looping through the items in the cart object gotten from localStorage,
+    set the quantity variable to the value of the total available quantities. */
+    settQuantity(quantity);
+  }, [cart]);
 
   const checkCart = (item) => {
     if (!cart) return false;
@@ -15,7 +40,7 @@ export function CartContextProvider({ children }) {
     const updatedCart = cart.map((elem) => {
       if (item.id === elem.id) {
         elem.quantity += 1;
-        setQuantity((prev) => prev + 1);
+        settQuantity((prev) => prev + 1);
         return elem;
       } else {
         return elem;
@@ -52,7 +77,7 @@ export function CartContextProvider({ children }) {
           url: `${item.thumbnail.path}.${item.thumbnail.extension}`,
         },
       ]);
-      setQuantity((prev) => prev + 1);
+      settQuantity((prev) => prev + 1);
     }
   }
   function removeFromCart(item) {
@@ -71,6 +96,7 @@ export function CartContextProvider({ children }) {
         decreaseItem,
         quantity,
         removeFromCart,
+        totalPrice,
       }}
     >
       {children}

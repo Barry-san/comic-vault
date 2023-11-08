@@ -25,12 +25,15 @@ export default function Cart({ navRef }) {
                 <div className="flex justify-between flex-col">
                   <div className="flex gap-4 justify-between">
                     <p className="uppercase underline">{item.name}</p>
-                    <p>{item.price}</p>
+                    <p>${item.price}</p>
                   </div>
                   <div className="flex justify-between p-2 ">
-                    <button onClick={() => increaseItem(item)}>+</button>
-                    <div>{item.quantity}</div>
-                    <button onClick={() => decreaseItem(item)}>-</button>
+                    <div>
+                      <button onClick={() => increaseItem(item)}>+</button>
+                      <div>{item.quantity}</div>
+                      <button onClick={() => decreaseItem(item)}>-</button>
+                    </div>
+                    <button>delete</button>
                   </div>
                 </div>
               </div>
