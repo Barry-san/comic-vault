@@ -4,32 +4,40 @@ import { createContext, useContext, useState, useMemo } from "react";
 export const cartContext = createContext([]);
 
 export function CartContextProvider({ children }) {
-  const defaultItems = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : [];
+  const getStorage = (name) => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(name)
+        ? JSON.parse(localStorage.getItem(name))
+        : [];
+    }
+    return [];
+  };
+  const defaultItems = getStorage("cart");
   const [cart, setCart] = useState(defaultItems);
   const [quantity, settQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   useMemo(() => {
     /*get cart items from localStorage if it is available. */
-    localStorage.setItem("cart", JSON.stringify(cart));
-    let price = 0;
-    for (let item of cart) {
-      price += item.price * item.quantity;
-    }
-    /*looping through the items in the cart object gotten from localStorage,
+    if (typeof window != "undefined") {
+      localStorage.setItem("cart", JSON.stringify(cart));
+      let price = 0;
+      for (let item of cart) {
+        price += item.price * item.quantity;
+      }
+      /*looping through the items in the cart object gotten from localStorage,
     set the price variable to the value of the total available price. */
-    setTotalPrice(price.toFixed(2));
+      setTotalPrice(price.toFixed(2));
 
-    let quantity = 0;
-    for (let item of cart) {
-      quantity += item.quantity;
-    }
+      let quantity = 0;
+      for (let item of cart) {
+        quantity += item.quantity;
+      }
 
-    /*looping through the items in the cart object gotten from localStorage,
+      /*looping through the items in the cart object gotten from localStorage,
     set the quantity variable to the value of the total available quantities. */
-    settQuantity(quantity);
+      settQuantity(quantity);
+    }
   }, [cart]);
 
   const checkCart = (item) => {

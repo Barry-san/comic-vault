@@ -14,7 +14,6 @@ export default function CheckoutPage() {
     >
       <div className="flex w-full justify-around h-[90vh] p-4">
         <section className="hidden md:block w-full overflow-y-scroll">
-          <p>Items in Cart : {quantity}</p>
           {cart.map((item) => (
             <CartItem
               key={item.id}

@@ -13,10 +13,14 @@ export default function CartItem({ item, functions }) {
           <p>${item.price}</p>
         </div>
         <div className="flex justify-between p-2 ">
-          <div>
-            <button onClick={() => increaseItem(item)}>+</button>
+          <div className="flex justify-between gap-4">
+            <button onClick={() => increaseItem(item)} className="px-3 border">
+              +
+            </button>
             <div>{item.quantity}</div>
-            <button onClick={() => decreaseItem(item)}>-</button>
+            <button onClick={() => decreaseItem(item)} className="px-3 border">
+              -
+            </button>
           </div>
           <button>delete</button>
         </div>
