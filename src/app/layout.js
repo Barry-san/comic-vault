@@ -2,6 +2,7 @@ import "./globals.css";
 import Navigation from "@/app/components/navigation/Navigation";
 import { CartContextProvider } from "./context/cartContext";
 import { Toaster } from "react-hot-toast";
+import Footer from "./components/footer/footer";
 
 export const metadata = {
   title: "Comic vault",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
           <Toaster />
           <Navigation />
           {children}
+          <Footer />
         </CartContextProvider>
       </body>
     </html>

@@ -1,5 +1,7 @@
 "use client";
 import { useCartContext } from "@/app/context/cartContext";
+import Link from "next/link";
+import CartItem from "./CartItem";
 export default function Cart({ navRef }) {
   const { cart, decreaseItem, increaseItem } = useCartContext();
 
@@ -16,33 +18,18 @@ export default function Cart({ navRef }) {
         <>
           <div className="w-full p-4 grid grid-cols-1 justify-between gap-4 ">
             {cart.map((item) => (
-              <div key={item.id} className="flex justify-between border p-2">
-                <img
-                  src={item.url}
-                  alt=""
-                  className="aspect-square object-contain w-1/2"
-                />
-                <div className="flex justify-between flex-col">
-                  <div className="flex gap-4 justify-between">
-                    <p className="uppercase underline">{item.name}</p>
-                    <p>${item.price}</p>
-                  </div>
-                  <div className="flex justify-between p-2 ">
-                    <div>
-                      <button onClick={() => increaseItem(item)}>+</button>
-                      <div>{item.quantity}</div>
-                      <button onClick={() => decreaseItem(item)}>-</button>
-                    </div>
-                    <button>delete</button>
-                  </div>
-                </div>
-              </div>
+              <CartItem
+                item={item}
+                key={item.id}
+                functions={{ decreaseItem, increaseItem }}
+              />
             ))}
           </div>
-
-          <button className="w-full border p-2 bg-black">
-            Proceed to checkout
-          </button>
+          <Link href={"/checkout"}>
+            <button className="w-full border p-2 bg-black">
+              Proceed to checkout
+            </button>
+          </Link>
         </>
       )}
     </div>

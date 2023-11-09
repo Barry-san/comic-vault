@@ -20,7 +20,7 @@ export function CartContextProvider({ children }) {
     }
     /*looping through the items in the cart object gotten from localStorage,
     set the price variable to the value of the total available price. */
-    setTotalPrice(price);
+    setTotalPrice(price.toFixed(2));
 
     let quantity = 0;
     for (let item of cart) {
@@ -53,7 +53,7 @@ export function CartContextProvider({ children }) {
     const updatedCart = cart.map((elem) => {
       if (item.id === elem.id) {
         elem.quantity > 1 ? (elem.quantity -= 1) : elem.quantity;
-        setQuantity((prev) => prev - 1);
+        settQuantity((prev) => prev - 1);
         return elem;
       } else {
         return elem;
