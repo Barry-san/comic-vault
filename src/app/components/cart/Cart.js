@@ -1,7 +1,10 @@
 "use client";
 import { useCartContext } from "@/app/context/cartContext";
 import Link from "next/link";
+import Image from "next/image";
 import CartItem from "./CartItem";
+import toggle, { close } from "../navigation/toggle";
+
 export default function Cart({ navRef }) {
   const { cart, decreaseItem, increaseItem } = useCartContext();
 
@@ -11,7 +14,18 @@ export default function Cart({ navRef }) {
       overflow-y-scroll "
       ref={navRef}
       aria-expanded={"false"}
+      onBlure={() => close(navRef)}
     >
+      <button onClick={() => close(navRef)} className="">
+        <span className="sr-only">close</span>
+        <Image
+          src={"/close.svg"}
+          height={24}
+          width={24}
+          alt="close-button"
+          className=" invert"
+        ></Image>
+      </button>
       {!cart.length ? (
         <p>No items in Cart</p>
       ) : (

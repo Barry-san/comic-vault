@@ -28,6 +28,15 @@ export default function CheckoutPage() {
           <p className="font-bold font-2xl">Total Cost : ${totalPrice}</p>
           <PayPalButtons
             style={{ layout: "vertical" }}
+            createOrder={(data, action) => {
+              console.log(data);
+              action.order.create({
+                purchase_units: [
+                  { description: "", amount: { value: totalPrice.toString() } },
+                ],
+              });
+            }}
+            onApprove={async () => {}}
             className="w-full"
           ></PayPalButtons>
         </section>
