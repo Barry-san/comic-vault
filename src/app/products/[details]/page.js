@@ -31,7 +31,6 @@ export default function DetailsPage({ params }) {
               <button
                 className="border py-4 bg-primary-0 "
                 onClick={() => {
-                  console.log(totalPrice);
                   addToCart(comics[0]);
                   toast.success("item added to cart", {
                     style: {

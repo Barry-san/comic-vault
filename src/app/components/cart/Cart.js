@@ -3,7 +3,7 @@ import { useCartContext } from "@/app/context/cartContext";
 import Link from "next/link";
 import Image from "next/image";
 import CartItem from "./CartItem";
-import toggle, { close } from "../navigation/toggle";
+import { close } from "../navigation/toggle";
 
 export default function Cart({ navRef }) {
   const { cart, decreaseItem, increaseItem } = useCartContext();
