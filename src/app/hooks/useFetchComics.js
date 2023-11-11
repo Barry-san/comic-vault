@@ -16,7 +16,7 @@ export default function useFetchComics(endpoint = "") {
         });
       });
     } catch (error) {
-      console.log(error);
+      console.log(error); //fixing env vaiables lol
     }
   }, [endpoint]);
 
