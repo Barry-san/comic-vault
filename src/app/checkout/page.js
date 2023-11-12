@@ -26,18 +26,23 @@ export default function CheckoutPage() {
           <p>Quantity of goods purchased :</p>
           <p className="text-3xl">{quantity}</p>
           <p className="font-bold font-2xl">Total Cost : ${totalPrice}</p>
-          <PayPalButtons
-            style={{ layout: "vertical" }}
-            createOrder={(data, action) => {
-              action.order.create({
-                purchase_units: [
-                  { description: "", amount: { value: totalPrice.toString() } },
-                ],
-              });
-            }}
-            onApprove={async () => {}}
-            className="w-full"
-          ></PayPalButtons>
+          <div className="-z-10 w-full">
+            <PayPalButtons
+              style={{ layout: "vertical" }}
+              createOrder={(data, action) => {
+                action.order.create({
+                  purchase_units: [
+                    {
+                      description: "",
+                      amount: { value: totalPrice.toString() },
+                    },
+                  ],
+                });
+              }}
+              onApprove={async () => {}}
+              className="w-full"
+            ></PayPalButtons>
+          </div>
         </section>
       </div>
     </PayPalScriptProvider>

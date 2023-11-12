@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navigation from "@/app/components/navigation/Navigation";
 import { CartContextProvider } from "./context/cartContext";
+
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/footer/footer";
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
         <CartContextProvider>
           <Toaster />
           <Navigation />
+
           {children}
           <Footer />
         </CartContextProvider>
