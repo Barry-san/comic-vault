@@ -11,7 +11,7 @@ export default function Products() {
       {isLoading ? (
         <p className="text-center">Loading...</p>
       ) : (
-        <div className="w-full grid gird-cols-1 md:grid-cols-3 gap-4 justify-between items-stretch">
+        <div className="w-full grid gird-cols-1 md:grid-cols-3 gap-4">
           {comics.map((comic) => (
             <Comic comicData={comic} key={comic.id} />
           ))}

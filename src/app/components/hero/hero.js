@@ -4,17 +4,11 @@ export default function Hero() {
       <img src="/hero.jpeg" alt="" />
       <div className="bg-[#6C1D12]">
         <p className="md:w-1/2 text-lg p-4 mx-auto ">
-          Step into the extraordinary world of Marvel, where heroes rise,
-          villains fall, and epic tales of bravery and power unfold.
-          <br />
-          Join the ranks of Spider-Man, Iron Man, Captain America, and countless
-          other legendary characters. Experience their triumphs and tribulations
-          in the pages of our iconic comics.
-          <br />
-          Discover the magic of owning a piece of Marvel history. Whether
-          you&apos;re a longtime Marvel aficionado or a newcomer to the Marvel
-          Universe, our curated collection ensures there&apos;s something for
-          everyone.
+          Dive into the Marvel Universe, where legendary heroes like Spider-Man,
+          Iron Man, and Captain America come to life in epic tales of bravery.
+          Whether you&apos;re a longtime fan or a newcomer, our curated
+          collection offers something for everyone, allowing you to own a piece
+          of Marvel history and experience the magic of these iconic characters.
         </p>
       </div>
     </section>

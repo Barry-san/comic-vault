@@ -15,6 +15,7 @@ module.exports = {
       },
       fontFamily: {
         body: ["'Anton'"],
+        display: ["'Array'"],
       },
       colors: {
         primary: ["#6C1D12"],
