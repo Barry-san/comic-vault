@@ -13,7 +13,7 @@ export default function Cart({ isOpen }) {
         isOpen ? "flex" : "hidden"
       } h-screen w-full md:w-1/2 fixed right-0 top-0  bg-[#6C1D12] transition-transform translate-x-full p-4 overflow-y-scroll `}
     >
-      <button onClick={() => close(navRef)} className="">
+      <button onClick={() => toggleCart(!isOpen)} className="">
         <span className="sr-only">close</span>
         <Image
           src={"/close.svg"}

@@ -1,14 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=array@700,701,400,601,600,401&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-::-webkit-scrollbar-thumb {
-    background-color: black;
-    width: 30px;
-}
-
-::-webkit-scrollbar {
-    background-color: #6C1D12;
-    width: 20px;
-}

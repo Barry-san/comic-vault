@@ -15,7 +15,12 @@ module.exports = {
         hero: "url('/Hero.jpg')",
       },
       fontFamily: {
+<<<<<<< HEAD
         body: ["'Anton'", "sans-serif"],
+=======
+        body: ["'Anton'"],
+        display: ["'Array'"],
+>>>>>>> 4e1e15451a95720c23f76d70bdde337c4a06bcc4
       },
       colors: {
         primary: ["#6C1D12"],
