@@ -1,18 +1,22 @@
 import Link from "next/link";
+
 export default function Comic({ comicData }) {
   return (
-    <Link href={`/products/${comicData.id}`}>
-      <div className="flex flex-col basis-full border-white border justify-between">
+    <div className="flex flex-col basis-full border border-black dark:border-white justify-between ">
+      <Link href={`/products/${comicData.id}`}>
         <img
           src={`${comicData.thumbnail.path}.${comicData?.thumbnail?.extension}`}
           alt=""
-          className="object-cover object-center w-full aspect-square"
+          className="object-cover object-center w-full h-[400px]"
         />
-        <div className="flex justify-between w-full items-center gap-4 border p-2 flex-grow">
-          <p className="uppercase underline">{comicData.title}</p>
-          <p>${comicData.prices[0].price}</p>
+      </Link>
+      <Link href={`/products/${comicData.id}`}>
+        <div className="flex flex-col justify-between w-full  gap-3 border p-2 flex-grow">
+          <h2 className="uppercase underline font-bold">{comicData.title}</h2>
+
+          <p>${comicData.prices[0].price || "0.00"}</p>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

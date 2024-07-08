@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="w-full bg-primary-0 flex justify-between p-4 border-t">
+    <div className="w-full bg-primary-0 flex justify-between p-4 border-t text-white">
       <div>
         <p>&copy; 2023 Powered by Marvel</p>
       </div>

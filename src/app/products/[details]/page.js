@@ -19,17 +19,26 @@ export default function DetailsPage({ params }) {
             alt=""
             className="max-h-[80vh] object-contain w-full"
           />
-          <div className="flex flex-col p-4 gap-4 justify-between">
+          <div className="flex flex-col p-4 gap-4 justify-between ">
             <div className="flex flex-col justify-between gap-4">
-              <h1 className="uppercase underline">{comics[0].title}</h1>
-              <p>${comics[0].prices[0].price}</p>
+              <h1 className="uppercase underline font-bold">
+                {comics[0].title}
+              </h1>
+              <p>${comics[0].prices[0].price || "0.00"}</p>
               <div>
-                <p>{comics[0].description}</p>
+                <article
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      comics[0].description ||
+                      comics[0].textObjects[0]?.text ||
+                      "No description available for this item",
+                  }}
+                ></article>
               </div>
             </div>
             <div className="flex gap-4 justify-between flex-col">
               <button
-                className="border py-4 bg-primary-0 "
+                className="border py-4 bg-primary-0 text-white"
                 onClick={() => {
                   addToCart(comics[0]);
                   toast.success("item added to cart", {
