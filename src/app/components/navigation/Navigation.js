@@ -34,7 +34,7 @@ export default function Navigation() {
         </button>
         {quantity > 0 ? quantity : null}
       </div>
-      <Cart isOpen={isOpen} />
+      <Cart isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>
   );
 }
