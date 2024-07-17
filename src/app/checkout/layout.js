@@ -4,5 +4,10 @@ export const metadata = {
 };
 
 export default function ({ children }) {
-  return <>{children}</>;
+  return (
+    <>
+      <script src="https://js.paystack.co/v1/inline.js"></script>
+      {children}
+    </>
+  );
 }
