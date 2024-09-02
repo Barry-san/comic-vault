@@ -10,7 +10,8 @@ export async function POST(request) {
     .digest('hex');
 
   if (hash == req.headers['x-paystack-signature']) {
-    const event = await request.json();
+    const { status, amount } = await request.json();
+    console.log(status, amount);
   }
 
   return NextResponse.json({ isSuccess: true });

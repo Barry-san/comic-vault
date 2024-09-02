@@ -1,12 +1,13 @@
 'use client';
-import PaystackPop from '@paystack/inline-js';
+import dynamic from 'next/dynamic';
+
 import { useEffect } from 'react';
 
 export default function Paystack() {
-  const url =
-    process.evn.NODE_ENV === 'development'
-      ? 'http://localhost:3000/api'
-      : 'https://comic-valut.vercel.app/api';
+  const PaystackPop = dynamic(() => import('@paystack/inline-js'), {
+    ssr: false,
+  });
+  const url = 'https://comic-vault.vercel.app/api';
   useEffect(() => {
     fetch(url, {
       method: 'POST',
